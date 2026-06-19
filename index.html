@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>maestro*PULSE — v01.06.005</title>
+<title>maestro*PULSE — v01.06.006</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -208,7 +208,7 @@ textarea:focus{outline:2px solid var(--dark-blue);border-color:var(--dark-blue)}
     <span>MAESTRO*ERP</span><span class="dot">◆</span>
     <span>CANADIAN CONSTRUCTION &amp; SERVICE CONTRACTING</span><span class="dot">◆</span>
     <span>maestro*PULSE</span><span class="dot">◆</span>
-    <span>v01.06.005</span>
+    <span>v01.06.006</span>
   </div>
   </div>
   <div id="apikey-bar" style="background:#1a3a5c;overflow:hidden;max-height:0;transition:max-height .25s ease">
@@ -287,7 +287,7 @@ textarea:focus{outline:2px solid var(--dark-blue);border-color:var(--dark-blue)}
             <div class="cost-note">~US$0.0000 · Sonnet 4 rates</div>
           </div>
         </div>
-        <div class="sidebar-footer">maestro.ca &nbsp;·&nbsp; 1 888 833-7777<br>Mon–Fri, 8:30 a.m.–5:30 p.m.<br><span style="color:#d0e6f5">v01.06.005</span></div>
+        <div class="sidebar-footer">maestro.ca &nbsp;·&nbsp; 1 888 833-7777<br>Mon–Fri, 8:30 a.m.–5:30 p.m.<br><span style="color:#d0e6f5">v01.06.006</span></div>
       </div>
     </div>
   </div>
@@ -295,7 +295,7 @@ textarea:focus{outline:2px solid var(--dark-blue);border-color:var(--dark-blue)}
 
 <script>
 // ─── Brand & config ───────────────────────────────────────────────────────────
-const MODEL = "claude-sonnet-4-20250514";
+const MODEL = "claude-sonnet-4-6";
 const B = { darkBlue:"#2464AB", lightBlue:"#3295CF", green:"#97CB54", gray:"#787878", nearBlack:"#111111", white:"#FFFFFF", lightGray:"#F4F6FA", blueTint:"#EBF2FA", greenTint:"#F2F8E8" };
 
 
@@ -314,6 +314,7 @@ const LANG = {
     scanIntro: "The Trend Scout searches Canadian construction and service contracting news, legislation, and industry sources right now — then selects the 5 most timely and relevant topics for today.",
     scanModeAuto: "🔍 Auto Scan",
     scanModeManual: "✏️ Choose a Topic",
+    scanBtn: "Run Topic Scan ▶", scanningBtn: "Scanning…",
     manualPlaceholder: "Type a topic (e.g. \u2018Prompt payment compliance in BC\u2019)\u2026",
     recurringLabel: "Frequently used topics",
     manualRunBtn: "Research This Topic ▶",
@@ -368,6 +369,7 @@ const LANG = {
     scanIntro: "L'Éclaireur de tendances recherche en ce moment les nouvelles de l'industrie canadienne de la construction et des services contractuels, puis sélectionne les 5 sujets les plus pertinents et opportuns pour aujourd'hui.",
     scanModeAuto: "🔍 Balayage automatique",
     scanModeManual: "✏️ Choisir un sujet",
+    scanBtn: "Lancer le balayage ▶", scanningBtn: "Recherche en cours…",
     manualPlaceholder: "Entrez un sujet (p. ex. \u00ab\u00a0Conformit\u00e9 au paiement rapide en C.-B.\u00a0\u00bb)\u2026",
     recurringLabel: "Sujets fréquemment utilisés",
     manualRunBtn: "Rechercher ce sujet ▶",
@@ -422,6 +424,7 @@ const LANG = {
     scanIntro: "El Explorador de tendencias busca ahora mismo noticias de la industria canadiense de la construcción y servicios de contratación, y selecciona los 5 temas más oportunos y relevantes para hoy.",
     scanModeAuto: "🔍 Exploración automática",
     scanModeManual: "✏️ Elegir un tema",
+    scanBtn: "Iniciar exploración ▶", scanningBtn: "Buscando…",
     manualPlaceholder: "Escriba un tema (p. ej. \u2018Cumplimiento de pago puntual en BC\u2019)\u2026",
     recurringLabel: "Temas usados frecuentemente",
     manualRunBtn: "Investigar este tema ▶",
@@ -1183,7 +1186,7 @@ function briefRemoveKeyword(i) { if (S.brief?.seoKeywords) { S.brief.seoKeywords
 
 function approveGate1() { S.humanNote = document.getElementById("human-note")?.value||""; addLog("Brief approved. Writer is next."); S.step="draft"; render(); }
 function approveGate2() { addLog("Draft approved. SEO agent is next."); S.step="publish"; render(); }
-// Pricing: claude-sonnet-4-20250514 — $3/M input, $15/M output (USD)
+// Pricing: claude-sonnet-4-6 — $3/M input, $15/M output (USD)
 const PRICE_IN  = 3.00  / 1000000;
 const PRICE_OUT = 15.00 / 1000000;
 function sessionCostUSD() { return (S.usage.inputTokens * PRICE_IN) + (S.usage.outputTokens * PRICE_OUT); }
